@@ -1,0 +1,11 @@
+module sample.core.version:constant;
+
+import std;
+
+namespace sample {
+
+inline constexpr std::uint16_t version_major{@Sample_VERSION_MAJOR@};
+inline constexpr std::uint16_t version_minor{@Sample_VERSION_MINOR@};
+inline constexpr std::uint16_t version_revision{@Sample_VERSION_PATCH@};
+
+} // namespace sample::constant
