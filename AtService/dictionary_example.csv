@@ -1,0 +1,25 @@
+command;response
+AT;OK
+ATE.;OK
+ATZ;OK
+AT&F;OK
+AT+CMEE=.*;OK
+AT+CFUN?;+CFUN: 1\r\n\r\nOK
+AT+CFUN=.*;OK
+ATI;Generic AT Modem\r\n\r\nOK
+AT+CGMI;Generic Manufacturer\r\n\r\nOK
+AT+CGMM;Generic LTE Modem\r\n\r\nOK
+AT+CGMR;v1.0.0\r\n\r\nOK
+AT+CGSN;861234567890123\r\n\r\nOK
+AT+CIMI;250011234567890\r\n\r\nOK
+AT+CCID;+CCID: 89701000000000000000\r\n\r\nOK
+AT+CSQ;+CSQ: 25,99\r\n\r\nOK
+AT+COPS?;+COPS: 0,0,"Operator Name",7\r\n\r\nOK
+AT+CPIN?;+CPIN: READY\r\n\r\nOK
+AT+CREG?;+CREG: 0,1\r\n\r\nOK
+AT+CGREG?;+CGREG: 0,1\r\n\r\nOK
+AT+CEREG?;+CEREG: 0,1\r\n\r\nOK
+AT+CGDCONT?;+CGDCONT: 1,"IP","internet","",0,0,0,0\r\n\r\nOK
+AT+CGDCONT=.*;OK
+AT+CGACT?;+CGACT: 1,1\r\n\r\nOK
+AT+CGACT=.*;OK
