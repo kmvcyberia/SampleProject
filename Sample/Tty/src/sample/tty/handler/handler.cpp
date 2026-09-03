@@ -38,11 +38,11 @@ auto Handler::create(HandlerConfig config)
     }
     config.log.info(
         "Starting handler...\n"
-        "\tdev path `{0}`\n\tsubsystem `{1}`\n\tvendor_id `{2:04x}`\n\tproduct_id `{3:04x}`",
+        "\tdev path `{0}`\n\tsubsystem `{1}`\n\tvendor_id `{2}`\n\tproduct_id `{3}`",
         config.dev_path.string(),
-        config.subsystem,
-        config.vendor_id,
-        config.product_id);
+        config.subsystem.value_or("N/A"),
+        config.vendor_id ? std::format("{0:04x}", *config.vendor_id) : "N/A",
+        config.product_id ? std::format("{0:04x}", *config.product_id) : "N/A");
     auto handler = std::make_shared<Handler>(Key{}, std::move(config), std::move(descriptor));
     result = handler->start();
     if(!result) {
@@ -99,9 +99,22 @@ void Handler::read()
             remove_cb_();
             return;
         }
-        const std::string_view chunk{buffer.data(), static_cast<std::size_t>(byte_count)};
-        SendCallback send_cb = [this](std::string_view data) { send(data); };
-        process_line_cb_(chunk, send_cb);
+        read_buffer_.append(buffer.data(), static_cast<std::size_t>(byte_count));
+
+        while(true) {
+            const std::size_t pos = read_buffer_.find_first_of("\r\n", consumed_);
+            if(pos == std::string::npos) {
+                break;
+            }
+            const std::string_view command{read_buffer_.data() + consumed_, pos - consumed_};
+            SendCallback send_cb = [this](std::string_view data) { send(data); };
+            process_line_cb_(command, send_cb);
+            consumed_ = pos + 1;
+        }
+        if(consumed_ >= 4096) {
+            read_buffer_.erase(0, consumed_);
+            consumed_ = 0;
+        }
     }
 }
 

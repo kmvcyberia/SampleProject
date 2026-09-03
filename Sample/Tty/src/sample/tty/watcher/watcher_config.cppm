@@ -38,6 +38,7 @@ struct WatcherConfig
     std::optional<std::string> path;      /**< Filter for the device path (e.g., "/dev/ttyUSB0"). */
     std::optional<std::uint16_t> vendor_id;  /**< Filter for the 16-bit USB vendor ID. */
     std::optional<std::uint16_t> product_id; /**< Filter for the 16-bit USB product/model ID. */
+    std::optional<std::string> virtual_path; /**< Explicit path to a virtual port. */
     SerialInfo serial_info;                  /**< Configuration options for serial port. */
 };
 

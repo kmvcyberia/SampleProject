@@ -55,6 +55,7 @@ struct AppConfig
     SerialInfo serial_info;
     LogInfo log_info;
     std::string dictionary_path;
+    std::optional<std::string> virtual_path;
 
     /**
      * @brief Parses CLI arguments, resolves configuration file path, and loads settings.

@@ -106,6 +106,8 @@ private:
     std::deque<std::string> write_buffer_;
     std::size_t write_offset_{0};
     SerialInfo serial_info_;
+    std::string read_buffer_;
+    std::size_t consumed_{0};
 };
 
 } // namespace sample::tty

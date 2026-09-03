@@ -21,9 +21,9 @@ struct HandlerConfig
     const Log& log;                        /**< Reference to the logger instance. */
     ProcessLineCallback& process_line_cb;  /**< Reference to the line processing callback. */
     const std::filesystem::path& dev_path; /**< Path to the target device (e.g., "/dev/ttyUSB0"). */
-    const std::string& subsystem;
-    std::uint16_t vendor_id;
-    std::uint16_t product_id;
+    std::optional<std::string> subsystem;
+    std::optional<std::uint16_t> vendor_id;
+    std::optional<std::uint16_t> product_id;
     std::move_only_function<void()> remove_cb; /**< Teardown callback executed when the device
                                                   disconnects or encounters a fatal I/O error. */
     SerialInfo serial_info;                    /**< Serial port communication settings. */
