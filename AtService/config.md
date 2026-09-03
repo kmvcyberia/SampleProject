@@ -77,5 +77,6 @@ Configures low-level communication parameters for the serial interface.
     "stop_bits": 1,
     "parity": "none",
     "flow_control": "none"
-  }
+  },
+  "virtual_path": "/dev/pts/3"
 }
