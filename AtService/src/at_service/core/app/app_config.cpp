@@ -45,7 +45,8 @@ auto AppConfig::from_config_file(const std::filesystem::path& config_path)
             .serial_info = json.value<SerialInfo>("serial").value_or(SerialInfo{}),
             .log_info = json.value<LogInfo>("log").value_or(LogInfo{}),
             .dictionary_path =
-                json.value<std::string>("dictionary_path").value_or("dictionary.csv")};
+                json.value<std::string>("dictionary_path").value_or("dictionary.csv"),
+            .virtual_path = json.value<std::string>("virtual_path")};
     }
     catch(const sample::error::FileException& e) {
         return std::unexpected{ErrorStatus{.code = EXIT_FAILURE, .message = e.what()}};

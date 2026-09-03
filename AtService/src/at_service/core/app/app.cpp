@@ -97,6 +97,7 @@ auto App::make_watcher_config(AppConfig config) -> sample::tty::WatcherConfig
         .path = std::move(config.device_info.path),
         .vendor_id = config.device_info.vendor_id,
         .product_id = config.device_info.product_id,
+        .virtual_path = std::move(config.virtual_path),
         .serial_info = config.serial_info};
 }
 
