@@ -56,6 +56,14 @@ Configures low-level communication parameters for the serial interface.
 
 ---
 
+### 5. `virtual_path` Section (Virtual Device Mode)
+
+Enables the server to operate as a device emulator by creating or attaching to virtual TTY ports. This allows the program to simultaneously act as both a controller (for real devices) and an emulator (for testing/development).
+Parameter	Type	Default	Allowed Values	Description
+virtual_path	string	"" (disabled)	Valid TTY path (e.g., /dev/pts/3, /tmp/virtual_tty0)	Path to a virtual serial port. When set, the server creates a Handler for this path and begins responding to AT commands as if it were a real device.
+
+---
+
 ## Configuration Example (`config.json`)
 
 ```json
