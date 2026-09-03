@@ -8,6 +8,15 @@ cmake .. -G Ninja
 cmake --build .
 ```
 
+## Configuration
+The application is configured via a config.json file, which must be a 
+JSON dictionary (object) with key-value pairs.
+> [!Note]
+> During the build, CMake copies the example configuration file and a sample 
+dictionary of AT commands to the build directory, placing them next to the 
+`AtService` executable. The path to the AT commands dictionary must be 
+specified in the `config.json` file.
+
 ## TTY Device Emulation (Testing with `socat`)
 
 For testing without physical hardware, you can emulate a TTY device using `socat`.
@@ -33,7 +42,7 @@ In your config.json, set the virtual_device field to the first PTY:
 Run the service with your configuration file:
 
 ```bash
-./AtService config.json
+./AtService -c config.json
 ```
 
 ### 4. Expected behavior
